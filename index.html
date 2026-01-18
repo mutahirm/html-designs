@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Archive | Mockup Gallery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass { 
+            background: rgba(255, 255, 255, 0.03); 
+            backdrop-filter: blur(12px); 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+        }
+        .glass:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #60a5fa, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-[#030712] text-slate-200 min-h-screen p-6 md:p-12">
+
+    <header class="max-w-6xl mx-auto mb-16 flex justify-between items-end">
+        <div>
+            <h1 class="text-4xl font-bold tracking-tight mb-2">Design <span class="gradient-text">Library</span></h1>
+            <p class="text-slate-500 font-light">Automated HTML Mockup Repository</p>
+        </div>
+        <div class="text-right hidden md:block">
+            <span id="count" class="text-xs font-mono text-slate-500 bg-white/5 px-3 py-1 rounded-full border border-white/10">
+                0 Designs Found
+            </span>
+        </div>
+    </header>
+
+    <main id="gallery" class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="col-span-full text-center py-20 animate-pulse">
+            <p class="text-slate-600">Syncing with GitHub Repo...</p>
+        </div>
+    </main>
+
+    <script>
+        async function fetchMockups() {
+            const gallery = document.getElementById('gallery');
+            const countLabel = document.getElementById('count');
+            
+            try {
+                // This fetches the JSON file created by your GitHub Action
+                const response = await fetch('./mockups-list.json');
+                if (!response.ok) throw new Error('No mockups found yet.');
+                
+                const data = await response.json();
+                
+                if (data.length === 0) {
+                    gallery.innerHTML = `<p class="col-span-full text-center text-slate-500">Your library is currently empty.</p>`;
+                    return;
+                }
+
+                countLabel.innerText = `${data.length} Designs Found`;
+
+                gallery.innerHTML = data.map(item => `
+                    <a href="${item.path}" target="_blank" class="glass rounded-3xl p-8 transition-all duration-300 group flex flex-col justify-between h-64">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="p-2 bg-blue-500/10 rounded-lg">
+                                    <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 21h6l-.75-4M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                    </svg>
+                                </div>
+                                <span class="text-[10px] uppercase tracking-widest text-slate-600 font-semibold">Mockup</span>
+                            </div>
+                            <h2 class="text-xl font-semibold text-white group-hover:text-blue-400 transition-colors capitalize">
+                                ${item.name.replace(/[-_]/g, ' ')}
+                            </h2>
+                            <p class="text-xs text-slate-500 mt-2 font-mono">
+                                ${new Date(item.date).toLocaleDateString('en-CA', { year: 'numeric', month: 'short', day: 'numeric' })}
+                            </p>
+                        </div>
+                        <div class="mt-6 flex items-center text-sm font-medium text-blue-500">
+                            Live Preview 
+                            <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </div>
+                    </a>
+                `).join('');
+
+            } catch (err) {
+                gallery.innerHTML = `
+                    <div class="col-span-full text-center py-20">
+                        <p class="text-slate-500">Library data not found. Please ensure the GitHub Action has run at least once.</p>
+                    </div>`;
+            }
+        }
+
+        fetchMockups();
+    </script>
+</body>
+</html>
