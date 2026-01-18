@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RODS - Favourite Philosophers Designs</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            /* RODS Palette */
+            --color-primary: #0052A0;
+            --color-secondary-orange: #F6931D;
+            --color-secondary-green: #669C42;
+            
+            /* Neutrals */
+            --bg-page: #f8f9fc;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --white: #ffffff;
+            --border: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 80px;
+        }
+
+        .design-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        /* Utility for Stars */
+        .stars {
+            display: flex;
+            gap: 2px;
+            color: var(--color-secondary-orange);
+        }
+        .star-icon {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+        .star-icon.empty {
+            fill: none;
+            opacity: 0.4;
+        }
+
+        /* --- DESIGN 1: THE "ORIGINAL SKETCH" (Clean List Accordion) --- */
+        #design-1 {
+            width: 100%;
+            max-width: 600px;
+            background: var(--white);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px -10px rgba(0, 82, 160, 0.1);
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        #design-1 .header {
+            padding: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        #design-1 .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        #design-1 .logo {
+            height: 40px;
+            width: auto;
+        }
+
+        #design-1 h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        #design-1 .add-btn {
+            background: var(--color-secondary-green);
+            color: white;
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+            box-shadow: 0 4px 12px rgba(102, 156, 66, 0.3);
+        }
+
+        #design-1 .add-btn:hover {
+            transform: translateY(-2px);
+            background: #568536;
+        }
+
+        #design-1 .list-container {
+            padding: 10px 0;
+        }
+
+        #design-1 .item {
+            padding: 20px 30px;
+            border-bottom: 1px solid var(--bg-page);
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        #design-1 .item:last-child {
+            border-bottom: none;
+        }
+
+        #design-1 .item:hover {
+            background: #fbfbfb;
+        }
+
+        #design-1 .item-summary {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        #design-1 .avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--white);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        #design-1 .info {
+            flex: 1;
+        }
+
+        #design-1 .name {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+
+        #design-1 .idea {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        #design-1 .rating-area {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 5px;
+        }
+
+        #design-1 .expand-icon {
+            color: var(--text-muted);
+            transition: transform 0.3s;
+        }
+
+        #design-1 .item.active .expand-icon {
+            transform: rotate(180deg);
+        }
+
+        #design-1 .note-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s;
+            padding: 0 30px;
+            margin-left: 76px; /* Align with text */
+        }
+
+        #design-1 .item.active .note-content {
+            padding-top: 15px;
+            max-height: 200px; /* Arbitrary large height */
+        }
+
+        #design-1 .note-text {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--text-main);
+            background: #f1f5f9;
+            padding: 15px;
+            border-radius: 12px;
+            border-left: 3px solid var(--color-primary);
+        }
+
+
+        /* --- DESIGN 2: THE "MODERN CARD" (Grid & Glass) --- */
+        #design-2 {
+            width: 100%;
+            max-width: 940px; /* Matching social media width spec */
+            background: linear-gradient(135deg, #f0f4f8 0%, #ffffff 100%);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 30px 60px rgba(0, 82, 160, 0.08);
+            position: relative;
+        }
+
+        #design-2 .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 40px;
+        }
+
+        #design-2 h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            line-height: 1;
+        }
+
+        #design-2 h1 span {
+            display: block;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--color-secondary-orange);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        #design-2 .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        #design-2 .card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
+            position: relative;
+            border: 1px solid transparent;
+            cursor: default;
+        }
+
+        #design-2 .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px rgba(0, 82, 160, 0.1);
+            border-color: rgba(0, 82, 160, 0.1);
+        }
+
+        #design-2 .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        #design-2 .card-avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 18px;
+            object-fit: cover;
+            background: #eee;
+        }
+
+        #design-2 .card-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 5px;
+        }
+
+        #design-2 .card-idea {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        #design-2 .actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border);
+            padding-top: 15px;
+        }
+
+        #design-2 .expand-btn {
+            background: transparent;
+            border: none;
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        #design-2 .add-card {
+            background: rgba(246, 147, 29, 0.1);
+            border: 2px dashed var(--color-secondary-orange);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-secondary-orange);
+            cursor: pointer;
+            min-height: 240px;
+        }
+        
+        #design-2 .add-card:hover {
+            background: rgba(246, 147, 29, 0.15);
+        }
+
+        /* Modal specific to Design 2 */
+        .modal-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(5px);
+            border-radius: 30px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 24px;
+            max-width: 80%;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            text-align: center;
+            border-top: 5px solid var(--color-primary);
+            position: relative;
+        }
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+
+        /* --- DESIGN 3: THE "EXECUTIVE DASHBOARD" (Sidebar & Dark Accent) --- */
+        #design-3 {
+            width: 100%;
+            max-width: 800px;
+            background: var(--color-primary);
+            border-radius: 20px;
+            display: flex;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0, 82, 160, 0.3);
+            min-height: 500px;
+        }
+
+        #design-3 .sidebar {
+            width: 80px;
+            background: rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 0;
+            gap: 40px;
+        }
+
+        #design-3 .main-content {
+            flex: 1;
+            background: var(--white);
+            border-top-left-radius: 30px;
+            border-bottom-left-radius: 30px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #design-3 .nav-icon {
+            color: rgba(255,255,255,0.6);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        #design-3 .nav-icon.active {
+            color: var(--color-secondary-orange);
+            filter: drop-shadow(0 0 8px rgba(246, 147, 29, 0.5));
+        }
+
+        #design-3 .header-3 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        #design-3 .title-group h2 {
+            font-size: 1.8rem;
+            color: var(--text-main);
+        }
+        
+        #design-3 .title-group p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        #design-3 .btn-new {
+            background: var(--color-primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        #design-3 .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        #design-3 .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+        }
+
+        #design-3 .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        #design-3 .dot {
+            position: absolute;
+            left: -35px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 3px solid var(--color-secondary-green);
+        }
+
+        #design-3 .t-card {
+            background: #f8f9fc;
+            padding: 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        #design-3 .t-card:hover {
+            background: #f1f5f9;
+        }
+
+        #design-3 .t-header {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #design-3 .t-name {
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+
+        #design-3 .t-meta {
+            margin-top: 8px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        #design-3 .hidden-note {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            color: var(--text-main);
+            font-size: 0.9rem;
+            margin-top: 0;
+            opacity: 0;
+        }
+        
+        #design-3 .timeline-item.open .hidden-note {
+            max-height: 100px;
+            margin-top: 15px;
+            opacity: 1;
+            border-top: 1px dashed var(--border);
+            padding-top: 10px;
+        }
+
+        /* Generic Logo Style */
+        .rods-logo {
+            height: 30px;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <!-- DATA SOURCE -->
+    <script>
+        const philosophers = [
+            {
+                id: 1,
+                name: "Friedrich Nietzsche",
+                idea: "He who has a why to live can bear almost any how.",
+                stars: 5,
+                note: "Nietzsche's concept of the Übermensch and the Will to Power challenges us to create our own values. His writing style is aphoristic and poetic.",
+                image: "https://images.unsplash.com/photo-1543783207-ec64e4d95325?auto=format&fit=crop&q=80&w=200&h=200"
+            },
+            {
+                id: 2,
+                name: "Simone de Beauvoir",
+                idea: "One is not born, but rather becomes, a woman.",
+                stars: 4,
+                note: "A foundational figure in existentialism and feminist theory. 'The Second Sex' analyzes the treatment of women throughout history.",
+                image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=200&h=200"
+            },
+            {
+                id: 3,
+                name: "Marcus Aurelius",
+                idea: "You have power over your mind - not outside events.",
+                stars: 5,
+                note: "The philosopher king. His 'Meditations' serves as a practical guide to Stoicism, focusing on self-discipline and cosmic perspective.",
+                image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=200&h=200"
+            }
+        ];
+
+        function getStarsHTML(count) {
+            let html = '<div class="stars">';
+            for (let i = 0; i < 5; i++) {
+                if (i < count) {
+                    html += `<svg class="star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>`;
+                } else {
+                    html += `<svg class="star-icon empty" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>`;
+                }
+            }
+            html += '</div>';
+            return html;
+        }
+    </script>
+
+    <!-- DESIGN 1 -->
+    <div style="width: 100%; display:flex; flex-direction:column; align-items:center;">
+        <div class="design-label">Option 01: Clean List</div>
+        <div id="design-1">
+            <div class="header">
+                <div class="brand">
+                    <img src="https://e1287dca1c7201d4603ccdb9f86e87f0.cdn.bubble.io/f1677354238652x883606807409011300/RODS%20Logo.svg" alt="RODS Logo" class="logo">
+                </div>
+                <h2>Favourite Philosophers</h2>
+                <button class="add-btn" onclick="addDummyItem('list')">
+                    <i data-lucide="plus"></i>
+                </button>
+            </div>
+            <div class="list-container" id="list-target">
+                <!-- JS will populate -->
+            </div>
+        </div>
+    </div>
+
+    <!-- DESIGN 2 -->
+    <div style="width: 100%; display:flex; flex-direction:column; align-items:center;">
+        <div class="design-label">Option 02: Modern Grid</div>
+        <div id="design-2">
+            <div class="modal-overlay" id="d2-modal">
+                <div class="modal-content">
+                    <i data-lucide="x" class="close-modal" onclick="closeModal()"></i>
+                    <h3 id="modal-title" style="margin-bottom: 10px; font-size: 1.5rem; color: var(--color-primary);"></h3>
+                    <p id="modal-note" style="line-height: 1.6; color: var(--text-muted);"></p>
+                </div>
+            </div>
+
+            <div class="top-bar">
+                <h1>
+                    <span>Philosophy Notes</span>
+                    Curated Minds
+                </h1>
+                <img src="https://e1287dca1c7201d4603ccdb9f86e87f0.cdn.bubble.io/f1677354238652x883606807409011300/RODS%20Logo.svg" alt="RODS Logo" class="rods-logo">
+            </div>
+            <div class="grid" id="grid-target">
+                <!-- JS Populated -->
+                <div class="card add-card" onclick="addDummyItem('grid')">
+                    <i data-lucide="plus-circle" size="48" style="margin-bottom: 10px;"></i>
+                    <span>Add New Note</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DESIGN 3 -->
+    <div style="width: 100%; display:flex; flex-direction:column; align-items:center;">
+        <div class="design-label">Option 03: Executive Dashboard</div>
+        <div id="design-3">
+            <div class="sidebar">
+                <img src="https://e1287dca1c7201d4603ccdb9f86e87f0.cdn.bubble.io/f1677354238652x883606807409011300/RODS%20Logo.svg" style="width: 40px; background: white; padding: 5px; border-radius: 8px;">
+                <i data-lucide="layout-grid" class="nav-icon active"></i>
+                <i data-lucide="bookmark" class="nav-icon"></i>
+                <i data-lucide="settings" class="nav-icon"></i>
+            </div>
+            <div class="main-content">
+                <div class="header-3">
+                    <div class="title-group">
+                        <h2>Personal Notes</h2>
+                        <p>Philosophy & Ideas</p>
+                    </div>
+                    <button class="btn-new" onclick="addDummyItem('timeline')">
+                        <i data-lucide="plus" size="16"></i> New Entry
+                    </button>
+                </div>
+                <div class="timeline" id="timeline-target">
+                    <!-- JS Populated -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- RENDER LOGIC ---
+
+        // 1. Render List (Design 1)
+        const listContainer = document.getElementById('list-target');
+        
+        function renderList() {
+            listContainer.innerHTML = '';
+            philosophers.forEach(p => {
+                const item = document.createElement('div');
+                item.className = 'item';
+                item.onclick = function() { this.classList.toggle('active'); };
+                item.innerHTML = `
+                    <div class="item-summary">
+                        <img src="${p.image}" class="avatar" alt="${p.name}">
+                        <div class="info">
+                            <div class="name">${p.name}</div>
+                            <div class="idea">"${p.idea}"</div>
+                        </div>
+                        <div class="rating-area">
+                            ${getStarsHTML(p.stars)}
+                            <i data-lucide="chevron-down" class="expand-icon" size="18"></i>
+                        </div>
+                    </div>
+                    <div class="note-content">
+                        <div class="note-text">${p.note}</div>
+                    </div>
+                `;
+                listContainer.appendChild(item);
+            });
+            lucide.createIcons();
+        }
+
+        // 2. Render Grid (Design 2)
+        const gridContainer = document.getElementById('grid-target');
+
+        function renderGrid() {
+            // Keep the add button
+            const addButton = gridContainer.querySelector('.add-card');
+            gridContainer.innerHTML = '';
+            
+            philosophers.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <div class="card-header">
+                        <img src="${p.image}" class="card-avatar">
+                        ${getStarsHTML(p.stars)}
+                    </div>
+                    <div class="card-name">${p.name}</div>
+                    <div class="card-idea">"${p.idea}"</div>
+                    <div class="actions">
+                        <button class="expand-btn" onclick="openModal('${p.name.replace(/'/g, "\\'")}', '${p.note.replace(/'/g, "\\'")}')">
+                            Read Note <i data-lucide="arrow-right" size="14"></i>
+                        </button>
+                    </div>
+                `;
+                gridContainer.appendChild(card);
+            });
+            gridContainer.appendChild(addButton);
+            lucide.createIcons();
+        }
+
+        function openModal(title, note) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-note').innerText = note;
+            document.getElementById('d2-modal').style.display = 'flex';
+        }
+        function closeModal() {
+            document.getElementById('d2-modal').style.display = 'none';
+        }
+
+        // 3. Render Timeline (Design 3)
+        const timelineContainer = document.getElementById('timeline-target');
+
+        function renderTimeline() {
+            timelineContainer.innerHTML = '';
+            philosophers.forEach(p => {
+                const item = document.createElement('div');
+                item.className = 'timeline-item';
+                item.onclick = function() { this.classList.toggle('open'); };
+                item.innerHTML = `
+                    <div class="dot"></div>
+                    <div class="t-card">
+                        <div class="t-header">
+                            <div class="t-name">${p.name}</div>
+                            ${getStarsHTML(p.stars)}
+                        </div>
+                        <div class="t-meta">
+                            <span>${p.idea}</span>
+                        </div>
+                        <div class="hidden-note">${p.note}</div>
+                    </div>
+                `;
+                timelineContainer.appendChild(item);
+            });
+        }
+
+        // --- ADD FUNCTIONALITY (Simulation) ---
+        function addDummyItem(type) {
+            const newPhil = {
+                id: philosophers.length + 1,
+                name: "New Philosopher",
+                idea: "A fresh perspective on modern existence.",
+                stars: 3,
+                note: "This is a newly added note. Click to expand and read more details about this entry.",
+                image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=200&h=200"
+            };
+            philosophers.push(newPhil);
+            
+            // Re-render specific view
+            if(type === 'list') renderList();
+            if(type === 'grid') renderGrid();
+            if(type === 'timeline') renderTimeline();
+        }
+
+        // Initialize
+        renderList();
+        renderGrid();
+        renderTimeline();
+        lucide.createIcons();
+
+    </script>
+</body>
+</html>
