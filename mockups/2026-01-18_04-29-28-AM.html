@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Brief: Philosophers - Award Winning Concepts</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        mono: ['Space Grotesk', 'monospace'],
+                    },
+                    colors: {
+                        'rods-primary': '#0052A0',
+                        'rods-secondary': '#F6931D',
+                        'rods-grey': '#669C42',
+                        'swiss-red': '#FF3B30',
+                        'dark-bg': '#0F172A',
+                        'paper': '#F5F5F0',
+                    },
+                    boxShadow: {
+                        'soft': '0 20px 40px -15px rgba(0, 0, 0, 0.1)',
+                        'hard': '8px 8px 0px 0px rgba(0,0,0,1)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* CSS to enforce aspect ratio for 8.5x11 Poster scaling */
+        .poster-container {
+            width: 100%;
+            max-width: 550px;
+            aspect-ratio: 8.5 / 11;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        .poster-container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        /* Smooth scrolling */
+        html { scroll-behavior: smooth; }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #888; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #555; }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen p-8 flex flex-col items-center">
+
+    <!-- Header / Context -->
+    <div class="text-center mb-12 max-w-2xl">
+        <h1 class="text-xs font-bold tracking-[0.3em] uppercase text-gray-400 mb-2">Design Brief Output</h1>
+        <h2 class="text-3xl font-serif font-bold text-gray-800">Favorite Philosopher Concepts</h2>
+        <p class="text-gray-500 mt-2">Three distinct variations based on the provided sketch. <br>Constraint: 8.5" x 11" Poster Format.</p>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="grid grid-cols-1 xl:grid-cols-3 gap-12 w-full max-w-[1800px] justify-items-center">
+
+        <!-- VARIATION 1: SWISS / INTERNATIONAL TYPOGRAPHIC STYLE -->
+        <!-- Characteristics: Asymmetric layout, use of a grid, sans-serif typefaces, flush left text. -->
+        <div class="poster-container bg-[#F4F4F4] shadow-2xl flex flex-col p-8 group relative isolate">
+            <!-- Decorative Grid Lines -->
+            <div class="absolute inset-0 pointer-events-none opacity-10" style="background-image: linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px); background-size: 40px 40px;"></div>
+
+            <!-- Header -->
+            <div class="border-b-4 border-black pb-6 mb-8 relative z-10">
+                <div class="flex justify-between items-end">
+                    <h1 class="text-6xl font-sans font-black tracking-tighter uppercase leading-[0.85]">
+                        Radio<br>Free<br>Thinker
+                    </h1>
+                    <div class="text-right">
+                        <span class="block bg-black text-white px-2 py-1 text-sm font-bold">VOL. 01</span>
+                        <span class="block text-xs font-mono mt-1">THE LIST</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Loop -->
+            <div class="flex-grow flex flex-col justify-between space-y-6 relative z-10" id="v1-content">
+                <!-- Javascript will inject content here, but structured for layout control -->
+            </div>
+
+            <!-- Footer -->
+            <div class="mt-auto border-t-4 border-black pt-4 flex justify-between items-center relative z-10">
+                <i data-lucide="aperture" class="w-8 h-8"></i>
+                <p class="font-mono text-xs uppercase tracking-widest">Constructive Thought Pattern</p>
+                <div class="w-8 h-8 bg-black rounded-full"></div>
+            </div>
+            
+            <!-- Floating Accent -->
+            <div class="absolute -right-12 bottom-1/3 w-64 h-64 bg-swiss-red rounded-full mix-blend-multiply filter blur-3xl opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
+        </div>
+
+
+        <!-- VARIATION 2: MODERN / DARK MODE / GLASSMORPHISM -->
+        <!-- Characteristics: Dark background, glowing gradients, blur effects, clean modern sans. -->
+        <div class="poster-container bg-dark-bg text-white shadow-2xl flex flex-col relative overflow-hidden">
+            <!-- Background Gradients -->
+            <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
+                <div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-purple-600 rounded-full blur-[100px] opacity-40 animate-pulse"></div>
+                <div class="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-blue-600 rounded-full blur-[120px] opacity-40"></div>
+            </div>
+
+            <div class="relative z-10 p-10 h-full flex flex-col">
+                <!-- Header -->
+                <div class="flex justify-between items-center mb-10">
+                    <div>
+                        <h2 class="text-sm text-blue-400 tracking-widest font-semibold uppercase mb-1">Curated Selection</h2>
+                        <h1 class="text-4xl font-bold tracking-tight">Mind & Matter</h1>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md p-3 rounded-2xl border border-white/10">
+                        <i data-lucide="sparkles" class="text-yellow-400 w-6 h-6"></i>
+                    </div>
+                </div>
+
+                <!-- List Container -->
+                <div class="flex-grow space-y-5" id="v2-content">
+                    <!-- JS Injection Target -->
+                </div>
+
+                <!-- Footer -->
+                <div class="mt-8 text-center opacity-50 text-xs font-light tracking-widest">
+                    DESIGNED FOR THE MODERN INTELLECTUAL
+                </div>
+            </div>
+        </div>
+
+
+        <!-- VARIATION 3: EDITORIAL / BRUTALIST SERIF -->
+        <!-- Characteristics: Large imagery focus, elegant serif typography, lots of whitespace, high contrast. -->
+        <div class="poster-container bg-[#FDFBF7] shadow-2xl flex flex-col p-0 relative">
+            
+            <!-- Vertical Sidebar Text -->
+            <div class="absolute left-0 top-0 h-full w-12 border-r border-gray-300 flex items-center justify-center">
+                <span class="rotate-180 py-10 text-xs font-mono tracking-[0.5em] text-gray-400" style="writing-mode: vertical-rl;">PHILOSOPHICAL DIGEST • 2023</span>
+            </div>
+
+            <div class="ml-12 h-full flex flex-col">
+                <!-- Header Image Area -->
+                <div class="h-1/3 bg-gray-900 relative overflow-hidden group">
+                    <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=2573&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700 grayscale" alt="Statue">
+                    <div class="absolute bottom-6 left-6 text-white">
+                        <h1 class="font-serif italic text-5xl">The Greats.</h1>
+                    </div>
+                </div>
+
+                <!-- List Content -->
+                <div class="flex-grow p-8 flex flex-col justify-center space-y-8" id="v3-content">
+                    <!-- JS Injection Target -->
+                </div>
+
+                <!-- Footer -->
+                <div class="p-6 border-t border-gray-200 flex justify-between items-center">
+                    <div class="flex space-x-1">
+                        <div class="w-3 h-3 bg-black rounded-full"></div>
+                        <div class="w-3 h-3 border border-black rounded-full"></div>
+                        <div class="w-3 h-3 border border-black rounded-full"></div>
+                    </div>
+                    <span class="font-serif italic text-gray-400">Est. 400 BC</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Script to Populate Content and Icons -->
+    <script>
+        // Data derived from the brief
+        const philosophers = [
+            {
+                name: "Marcus Aurelius",
+                quote: "The happiness of your life depends upon the quality of your thoughts.",
+                rating: 3, // out of 3 as per sketch
+                img: "https://images.unsplash.com/photo-1596721228229-c8c3664d4b2f?w=800&auto=format&fit=crop&q=60" // Statue of Marcus
+            },
+            {
+                name: "Friedrich Nietzsche",
+                quote: "He who has a why to live can bear almost any how.",
+                rating: 2,
+                img: "https://images.unsplash.com/photo-1543362906-ac1b4826356f?w=800&auto=format&fit=crop&q=60" // Abstract/Statue
+            },
+            {
+                name: "Hypatia",
+                quote: "Reserve your right to think, for even to think wrongly is better than not to think at all.",
+                rating: 3,
+                img: "https://images.unsplash.com/photo-1529158062015-cad636e205a0?w=800&auto=format&fit=crop&q=60" // Classical female statue
+            }
+        ];
+
+        // ---------------------------------------------------------
+        // RENDER VARIATION 1 (Swiss)
+        // ---------------------------------------------------------
+        const v1Container = document.getElementById('v1-content');
+        philosophers.forEach((p, index) => {
+            const stars = Array(3).fill(0).map((_, i) => 
+                i < p.rating 
+                ? `<i data-lucide="star" class="fill-black text-black w-4 h-4"></i>` 
+                : `<i data-lucide="star" class="text-gray-300 w-4 h-4"></i>`
+            ).join('');
+
+            v1Container.innerHTML += `
+                <div class="flex items-start gap-4 group">
+                    <div class="w-16 h-16 rounded-none border-2 border-black overflow-hidden flex-shrink-0 relative">
+                        <img src="${p.img}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300">
+                    </div>
+                    <div class="flex-grow border-b border-gray-300 pb-4">
+                        <div class="flex justify-between items-baseline mb-1">
+                            <h3 class="text-xl font-bold font-sans uppercase tracking-tight group-hover:text-swiss-red transition-colors">${p.name}</h3>
+                            <div class="flex gap-1">${stars}</div>
+                        </div>
+                        <p class="font-serif italic text-gray-600 text-sm leading-relaxed">"${p.quote}"</p>
+                    </div>
+                </div>
+            `;
+        });
+
+        // ---------------------------------------------------------
+        // RENDER VARIATION 2 (Modern/Dark)
+        // ---------------------------------------------------------
+        const v2Container = document.getElementById('v2-content');
+        philosophers.forEach((p, index) => {
+            const stars = Array(3).fill(0).map((_, i) => 
+                i < p.rating 
+                ? `<i data-lucide="zap" class="fill-yellow-400 text-yellow-400 w-3 h-3"></i>` 
+                : `<i data-lucide="zap" class="text-gray-600 w-3 h-3"></i>`
+            ).join('');
+
+            v2Container.innerHTML += `
+                <div class="group relative bg-white/5 backdrop-blur-md rounded-2xl p-4 border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-[1.02] cursor-default">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full ring-2 ring-white/20 p-0.5 overflow-hidden flex-shrink-0">
+                            <img src="${p.img}" class="w-full h-full object-cover rounded-full">
+                        </div>
+                        <div class="flex-grow">
+                            <div class="flex justify-between items-center">
+                                <h3 class="font-bold text-lg text-white">${p.name}</h3>
+                                <div class="flex gap-1 bg-black/30 rounded-full px-2 py-1">${stars}</div>
+                            </div>
+                            <div class="h-0.5 w-full bg-gradient-to-r from-blue-500 to-purple-500 opacity-30 my-2 rounded-full"></div>
+                            <p class="text-gray-300 text-xs font-light tracking-wide truncate group-hover:whitespace-normal group-hover:overflow-visible transition-all">
+                                ${p.quote}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        // ---------------------------------------------------------
+        // RENDER VARIATION 3 (Editorial)
+        // ---------------------------------------------------------
+        const v3Container = document.getElementById('v3-content');
+        philosophers.forEach((p, index) => {
+            const stars = Array(p.rating).fill('★').join('');
+            
+            v3Container.innerHTML += `
+                <div class="flex gap-6 items-center group">
+                    <span class="font-serif text-4xl text-gray-200 italic font-black">0${index + 1}</span>
+                    <div class="flex-grow">
+                        <div class="flex items-center gap-3 mb-1">
+                            <h3 class="font-serif text-2xl text-gray-900 group-hover:underline decoration-1 underline-offset-4">${p.name}</h3>
+                            <span class="text-xs text-yellow-600 tracking-widest pt-1">${stars}</span>
+                        </div>
+                        <p class="font-sans text-xs text-gray-500 uppercase tracking-wider border-l-2 border-gray-300 pl-3 py-1">
+                            Idea: ${p.quote.substring(0, 40)}...
+                        </p>
+                    </div>
+                    <div class="w-12 h-12 overflow-hidden rounded-full grayscale opacity-0 group-hover:opacity-100 transition-opacity duration-500 -ml-4">
+                         <img src="${p.img}" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            `;
+        });
+
+        // Initialize Icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
