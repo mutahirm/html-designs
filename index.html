@@ -10,37 +10,54 @@
     <style>
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
-            background-color: #f8fafc;
+            background-color: #fdfaff;
+            /* Subtle colorful background blobs */
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(270,100%,98%,1) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, hsla(240,100%,98%,1) 0, transparent 50%),
+                radial-gradient(at 100% 0%, hsla(280,100%,95%,1) 0, transparent 50%);
         }
-        .card-shadow {
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+        .purple-glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(139, 92, 246, 0.1);
         }
-        .card-shadow:hover {
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
-            transform: translateY(-2px);
+        .purple-card-shadow {
+            box-shadow: 0 10px 30px -10px rgba(139, 92, 246, 0.1);
+        }
+        .purple-card-shadow:hover {
+            box-shadow: 0 20px 40px -15px rgba(139, 92, 246, 0.2);
+            transform: translateY(-4px);
+            border-color: rgba(139, 92, 246, 0.3);
         }
     </style>
 </head>
 <body class="text-slate-800 antialiased min-h-screen">
 
-    <header class="max-w-6xl mx-auto pt-16 pb-12 px-6">
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+    <header class="max-w-6xl mx-auto pt-20 pb-16 px-6 relative">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
-                <h1 class="text-4xl font-extrabold tracking-tight text-slate-900">Mockup Library</h1>
-                <p class="text-lg text-slate-500 mt-2 font-medium">A space for all my ideas and web experiments.</p>
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-100 text-purple-600 text-xs font-bold uppercase tracking-widest mb-4">
+                    <i data-lucide="sparkles" class="w-3 h-3"></i>
+                    Creative Hub
+                </div>
+                <h1 class="text-5xl font-extrabold tracking-tight text-slate-900">
+                    Mockup <span class="text-purple-600">Library</span>
+                </h1>
+                <p class="text-xl text-slate-500 mt-3 font-medium">A curated collection of web mockups and design experiments.</p>
             </div>
-            <div id="status-tag" class="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-slate-200 text-sm text-slate-600 font-semibold card-shadow">
-                <i data-lucide="layers" class="w-4 h-4 text-blue-500"></i>
-                <span id="count">Scanning...</span>
+            
+            <div id="status-tag" class="inline-flex items-center gap-3 bg-white px-6 py-3 rounded-2xl border border-purple-100 text-slate-700 font-bold purple-card-shadow">
+                <div class="w-2 h-2 rounded-full bg-purple-500 animate-pulse"></div>
+                <span id="count" class="text-sm">Syncing designs...</span>
             </div>
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-6 pb-20">
-        <div id="gallery" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <main class="max-w-6xl mx-auto px-6 pb-24">
+        <div id="gallery" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             <div class="col-span-full py-20 text-center">
-                <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-slate-200 border-t-blue-500"></div>
-                <p class="mt-4 text-slate-500 font-medium">Gathering your designs...</p>
+                <div class="inline-block animate-spin rounded-full h-10 w-10 border-4 border-purple-100 border-t-purple-600"></div>
             </div>
         </div>
     </main>
@@ -53,62 +70,57 @@
             try {
                 const response = await fetch('./mockups-list.json');
                 if (!response.ok) throw new Error();
-                
                 const designs = await response.json();
-                countLabel.innerText = `${designs.length} designs saved`;
+                
+                countLabel.innerText = `${designs.length} Designs Archived`;
 
                 if (designs.length === 0) {
-                    gallery.innerHTML = `<div class="col-span-full py-12 text-center bg-white rounded-3xl border-2 border-dashed border-slate-200">
-                        <p class="text-slate-400">No mockups found. Start by sending one from Discord!</p>
+                    gallery.innerHTML = `<div class="col-span-full py-16 text-center bg-white/50 rounded-[3rem] border-2 border-dashed border-purple-200">
+                        <p class="text-purple-400 font-medium text-lg">Your library is waiting for its first masterpiece.</p>
                     </div>`;
                     return;
                 }
 
                 gallery.innerHTML = designs.map(design => `
-                    <div class="group bg-white rounded-[2rem] border border-slate-100 p-8 transition-all duration-300 card-shadow relative overflow-hidden">
-                        <div class="flex flex-col h-full">
-                            <div class="flex items-start justify-between mb-6">
-                                <div class="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600">
-                                    <i data-lucide="layout-template" class="w-6 h-6"></i>
+                    <div class="group purple-glass rounded-[2.5rem] p-10 transition-all duration-500 purple-card-shadow relative overflow-hidden">
+                        <div class="absolute -right-4 -top-4 w-24 h-24 bg-purple-100/50 rounded-full blur-3xl group-hover:bg-purple-200/80 transition-colors"></div>
+                        
+                        <div class="flex flex-col h-full relative z-10">
+                            <div class="flex items-center justify-between mb-8">
+                                <div class="w-14 h-14 bg-purple-600 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-purple-200">
+                                    <i data-lucide="layout" class="w-7 h-7"></i>
                                 </div>
-                                <span class="bg-slate-100 text-slate-500 text-[10px] uppercase tracking-widest px-3 py-1 rounded-full font-bold">
-                                    HTML
-                                </span>
+                                <div class="px-4 py-1.5 bg-white border border-purple-100 rounded-xl text-purple-600 text-[10px] font-black uppercase tracking-tighter">
+                                    V1.0
+                                </div>
                             </div>
                             
-                            <h2 class="text-xl font-bold text-slate-900 capitalize leading-snug group-hover:text-blue-600 transition-colors">
-                                ${design.name.replace(/[-_]/g, ' ')}
+                            <h2 class="text-2xl font-bold text-slate-900 leading-tight group-hover:text-purple-600 transition-colors">
+                                ${design.name}
                             </h2>
                             
-                            <div class="mt-2 flex items-center gap-2 text-slate-400 text-sm">
-                                <i data-lucide="calendar" class="w-4 h-4"></i>
-                                <span>${new Date(design.date).toLocaleDateString('en-CA', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+                            <div class="mt-4 flex items-center gap-2 text-slate-400 font-medium text-sm">
+                                <i data-lucide="calendar-days" class="w-4 h-4 text-purple-300"></i>
+                                <span>${new Date(design.date).toLocaleDateString('en-CA', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                             </div>
 
-                            <div class="mt-8 pt-6 border-t border-slate-50 flex items-center justify-between">
-                                <a href="${design.path}" target="_blank" class="text-sm font-bold text-slate-900 flex items-center gap-2 hover:gap-3 transition-all">
-                                    Open Preview
-                                    <i data-lucide="arrow-right" class="w-4 h-4 text-blue-500"></i>
+                            <div class="mt-10 flex items-center">
+                                <a href="${design.path}" target="_blank" class="w-full bg-slate-900 group-hover:bg-purple-600 text-white text-center py-4 rounded-2xl font-bold text-sm transition-all flex items-center justify-center gap-2 shadow-xl shadow-slate-200 group-hover:shadow-purple-200">
+                                    View Live Mockup
+                                    <i data-lucide="external-link" class="w-4 h-4"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
                 `).join('');
 
-                // Re-initialize icons for the newly injected HTML
                 lucide.createIcons();
 
             } catch (err) {
-                gallery.innerHTML = `
-                    <div class="col-span-full py-20 text-center">
-                        <i data-lucide="alert-circle" class="w-12 h-12 text-slate-300 mx-auto mb-4"></i>
-                        <p class="text-slate-500 font-medium">Ready to start? Send your first mockup from Discord to see it here.</p>
-                    </div>`;
-                lucide.createIcons();
+                gallery.innerHTML = `<p class="col-span-full text-center text-slate-400">Unable to load library data.</p>`;
             }
         }
 
-        // Initialize
         loadDesigns();
         lucide.createIcons();
     </script>
