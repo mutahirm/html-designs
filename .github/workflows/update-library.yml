@@ -1,0 +1,29 @@
+name: Update Mockup Library
+
+on:
+  push:
+    paths:
+      - 'mockups/**'
+  workflow_dispatch: 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Run Indexer
+        run: node generate-index.js
+
+      - name: Commit and Push
+        run: |
+          git config --global user.name "Gallery-Bot"
+          git config --global user.email "bot@github.com"
+          git add mockups-list.json
+          git commit -m "Auto-update mockup library index" || exit 0
+          git push
