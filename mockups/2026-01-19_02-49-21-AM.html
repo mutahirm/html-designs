@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Award Winning Design Concepts</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        mono: ['Space Grotesk', 'monospace'],
+                    },
+                    colors: {
+                        'swiss-red': '#FF3B30',
+                        'off-white': '#F2F0E9',
+                        'deep-charcoal': '#121212',
+                    },
+                    aspectRatio: {
+                        'poster': '8.5 / 11',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .noise-bg {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+        }
+
+        /* Smooth scrolling */
+        html { scroll-behavior: smooth; }
+        
+        /* Hide scrollbar for cleaner presentation */
+        ::-webkit-scrollbar { width: 0px; background: transparent; }
+    </style>
+</head>
+<body class="bg-neutral-900 min-h-screen flex flex-col items-center py-12 gap-16">
+
+    <!-- DESIGN 1: THE SWISS MODERNIST -->
+    <!-- Style: Grid-based, High Contrast, International Typographic Style -->
+    <div class="relative w-full max-w-[800px] aspect-[8.5/11] bg-white text-black overflow-hidden shadow-2xl flex flex-col group">
+        <!-- Header -->
+        <header class="p-8 border-b-4 border-black flex justify-between items-end">
+            <div>
+                <h1 class="text-6xl font-black tracking-tighter uppercase leading-[0.8]">The<br>Greats</h1>
+                <p class="mt-2 font-mono text-sm tracking-widest text-swiss-red font-bold">VOL. 01 — INTELLECT</p>
+            </div>
+            <div class="text-right">
+                <i data-lucide="asterisk" class="w-12 h-12 text-black animate-spin-slow duration-[10s]"></i>
+            </div>
+        </header>
+
+        <!-- Grid Content -->
+        <main class="flex-grow flex flex-col">
+            <!-- Labels -->
+            <div class="grid grid-cols-12 gap-4 px-8 py-4 border-b border-black text-xs font-bold uppercase tracking-widest text-neutral-500">
+                <div class="col-span-2">Portrait</div>
+                <div class="col-span-4">Philosopher</div>
+                <div class="col-span-4">Core Idea</div>
+                <div class="col-span-2 text-right">Impact</div>
+            </div>
+
+            <!-- Item 1 -->
+            <div class="grid grid-cols-12 gap-4 px-8 py-6 border-b border-neutral-200 items-center hover:bg-neutral-50 transition-colors duration-300">
+                <div class="col-span-2">
+                    <div class="w-16 h-16 rounded-full overflow-hidden grayscale contrast-125 ring-1 ring-black/10">
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&q=80" class="w-full h-full object-cover" alt="Portrait">
+                    </div>
+                </div>
+                <div class="col-span-4 pr-4">
+                    <h2 class="text-xl font-bold tracking-tight">Marcus Aurelius</h2>
+                    <span class="text-xs bg-black text-white px-2 py-0.5 mt-1 inline-block">STOICISM</span>
+                </div>
+                <div class="col-span-4">
+                    <p class="font-serif italic leading-tight text-neutral-600">"You have power over your mind - not outside events."</p>
+                </div>
+                <div class="col-span-2 flex justify-end gap-0.5 text-swiss-red">
+                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="grid grid-cols-12 gap-4 px-8 py-6 border-b border-neutral-200 items-center hover:bg-neutral-50 transition-colors duration-300">
+                <div class="col-span-2">
+                    <div class="w-16 h-16 rounded-full overflow-hidden grayscale contrast-125 ring-1 ring-black/10">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" class="w-full h-full object-cover" alt="Portrait">
+                    </div>
+                </div>
+                <div class="col-span-4 pr-4">
+                    <h2 class="text-xl font-bold tracking-tight">Simone de Beauvoir</h2>
+                    <span class="text-xs bg-black text-white px-2 py-0.5 mt-1 inline-block">EXISTENTIALISM</span>
+                </div>
+                <div class="col-span-4">
+                    <p class="font-serif italic leading-tight text-neutral-600">"One is not born, but rather becomes, a woman."</p>
+                </div>
+                <div class="col-span-2 flex justify-end gap-0.5 text-swiss-red">
+                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    <i data-lucide="star-half" class="w-4 h-4 fill-current"></i>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="grid grid-cols-12 gap-4 px-8 py-6 items-center hover:bg-neutral-50 transition-colors duration-300">
+                <div class="col-span-2">
+                    <div class="w-16 h-16 rounded-full overflow-hidden grayscale contrast-125 ring-1 ring-black/10">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" class="w-full h-full object-cover" alt="Portrait">
+                    </div>
+                </div>
+                <div class="col-span-4 pr-4">
+                    <h2 class="text-xl font-bold tracking-tight">Friedrich Nietzsche</h2>
+                    <span class="text-xs bg-black text-white px-2 py-0.5 mt-1 inline-block">NIHILISM</span>
+                </div>
+                <div class="col-span-4">
+                    <p class="font-serif italic leading-tight text-neutral-600">"He who has a why to live can bear almost any how."</p>
+                </div>
+                <div class="col-span-2 flex justify-end gap-0.5 text-swiss-red">
+                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                </div>
+            </div>
+            
+            <!-- Graphic Footer -->
+            <div class="mt-auto p-8 border-t-4 border-black bg-neutral-100 relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 opacity-10 rotate-12">
+                    <i data-lucide="quote" class="w-64 h-64 text-black"></i>
+                </div>
+                <div class="flex justify-between items-center relative z-10">
+                    <div class="font-mono text-xs">
+                        FIG 3.14<br>
+                        ARCHIVE_2024
+                    </div>
+                    <div class="w-32 h-1 bg-black"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+
+    <!-- DESIGN 2: DARK GLASSMORPHISM -->
+    <!-- Style: Gradient mesh, blur effects, futuristic UI -->
+    <div class="relative w-full max-w-[800px] aspect-[8.5/11] bg-deep-charcoal text-white overflow-hidden shadow-2xl rounded-sm">
+        <!-- Ambient Background -->
+        <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-purple-600 rounded-full mix-blend-screen filter blur-[100px] opacity-40"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-blue-500 rounded-full mix-blend-screen filter blur-[100px] opacity-40"></div>
+        <div class="absolute inset-0 noise-bg"></div>
+
+        <div class="relative z-10 h-full flex flex-col p-10">
+            <!-- Nav -->
+            <div class="flex justify-between items-center mb-12">
+                <div class="flex items-center gap-3">
+                    <div class="p-2 bg-white/10 rounded-lg backdrop-blur-md border border-white/10">
+                        <i data-lucide="library" class="w-6 h-6 text-blue-300"></i>
+                    </div>
+                    <span class="font-sans font-medium tracking-wide text-white/80">MindStream</span>
+                </div>
+                <div class="px-4 py-1.5 rounded-full border border-white/20 text-xs font-mono text-blue-200 bg-white/5 backdrop-blur-sm">
+                    TOP RATED
+                </div>
+            </div>
+
+            <h1 class="text-5xl md:text-6xl font-sans font-light mb-12 tracking-tight">
+                Favorite <br>
+                <span class="font-serif italic text-blue-300">Philosophers</span>
+            </h1>
+
+            <!-- Cards Stack -->
+            <div class="flex flex-col gap-6">
+                <!-- Card 1 -->
+                <div class="glass-card p-5 rounded-2xl flex items-center gap-6 group hover:bg-white/10 transition-all duration-500 cursor-pointer">
+                    <div class="relative">
+                        <div class="w-16 h-16 rounded-full p-0.5 bg-gradient-to-tr from-blue-400 to-purple-500">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" class="w-full h-full rounded-full object-cover border-2 border-slate-900" alt="Avatar">
+                        </div>
+                        <div class="absolute -bottom-1 -right-1 bg-blue-500 text-[10px] font-bold px-1.5 py-0.5 rounded-md border border-slate-900">1</div>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-xl font-semibold text-white group-hover:text-blue-200 transition-colors">Hypatia</h3>
+                            <div class="flex gap-1">
+                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            </div>
+                        </div>
+                        <p class="text-white/60 text-sm mt-1 font-light line-clamp-1">Neoplatonism & Mathematics. "Reserve your right to think."</p>
+                    </div>
+                    <div class="p-2 rounded-full border border-white/10 text-white/40 group-hover:border-blue-400/50 group-hover:text-blue-300 transition-all">
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card p-5 rounded-2xl flex items-center gap-6 group hover:bg-white/10 transition-all duration-500 cursor-pointer">
+                    <div class="relative">
+                        <div class="w-16 h-16 rounded-full p-0.5 bg-gradient-to-tr from-emerald-400 to-teal-500">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" class="w-full h-full rounded-full object-cover border-2 border-slate-900" alt="Avatar">
+                        </div>
+                        <div class="absolute -bottom-1 -right-1 bg-emerald-500 text-[10px] font-bold px-1.5 py-0.5 rounded-md border border-slate-900">2</div>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-xl font-semibold text-white group-hover:text-emerald-200 transition-colors">Confucius</h3>
+                            <div class="flex gap-1">
+                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-white/20"></i>
+                            </div>
+                        </div>
+                        <p class="text-white/60 text-sm mt-1 font-light line-clamp-1">Ethics & Family. "Everything has beauty, but not everyone sees it."</p>
+                    </div>
+                    <div class="p-2 rounded-full border border-white/10 text-white/40 group-hover:border-emerald-400/50 group-hover:text-emerald-300 transition-all">
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card p-5 rounded-2xl flex items-center gap-6 group hover:bg-white/10 transition-all duration-500 cursor-pointer">
+                    <div class="relative">
+                        <div class="w-16 h-16 rounded-full p-0.5 bg-gradient-to-tr from-pink-400 to-rose-500">
+                            <img src="https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?auto=format&fit=crop&w=150&q=80" class="w-full h-full rounded-full object-cover border-2 border-slate-900" alt="Avatar">
+                        </div>
+                        <div class="absolute -bottom-1 -right-1 bg-rose-500 text-[10px] font-bold px-1.5 py-0.5 rounded-md border border-slate-900">3</div>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-xl font-semibold text-white group-hover:text-rose-200 transition-colors">Socrates</h3>
+                            <div class="flex gap-1">
+                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                                <i data-lucide="star-half" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                                <i data-lucide="star" class="w-4 h-4 text-white/20"></i>
+                            </div>
+                        </div>
+                        <p class="text-white/60 text-sm mt-1 font-light line-clamp-1">Epistemology. "The only true wisdom is in knowing you know nothing."</p>
+                    </div>
+                    <div class="p-2 rounded-full border border-white/10 text-white/40 group-hover:border-rose-400/50 group-hover:text-rose-300 transition-all">
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Floating visual data -->
+            <div class="mt-auto grid grid-cols-2 gap-4">
+                <div class="glass-card p-4 rounded-xl">
+                    <span class="text-xs text-blue-200 uppercase tracking-wider block mb-2">Total Analyzed</span>
+                    <div class="text-3xl font-mono">142</div>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex items-center justify-between">
+                     <span class="text-xs text-blue-200 uppercase tracking-wider">Avg Rating</span>
+                     <div class="text-3xl font-mono">4.8</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- DESIGN 3: EDITORIAL BRUTALISM -->
+    <!-- Style: Paper texture, Serif fonts, Overlapping elements, Artistic -->
+    <div class="relative w-full max-w-[800px] aspect-[8.5/11] bg-off-white text-stone-900 overflow-hidden shadow-2xl p-8 border border-stone-200">
+        <!-- Background Texture -->
+        <div class="absolute inset-0 opacity-50 pointer-events-none" style="background-image: url('https://www.transparenttextures.com/patterns/cream-dust.png');"></div>
+        
+        <!-- Sidebar Line -->
+        <div class="absolute left-8 top-0 bottom-0 w-px bg-stone-300 z-0"></div>
+
+        <div class="relative z-10 h-full flex flex-col">
+            <div class="pl-8 mb-12">
+                <div class="inline-block border border-stone-900 px-3 py-1 rounded-full text-xs font-mono uppercase mb-4">The List</div>
+                <h1 class="font-serif text-7xl italic leading-none text-stone-900">Thinkers <br>& Dreamers</h1>
+            </div>
+
+            <div class="flex-grow space-y-12 pl-8">
+                
+                <!-- Entry 1 -->
+                <div class="relative group">
+                    <div class="absolute -left-14 top-2 font-mono text-sm text-stone-400 -rotate-90 origin-center w-12 text-right">NO. 01</div>
+                    <div class="flex items-start gap-6">
+                        <div class="w-24 h-32 flex-shrink-0 bg-stone-300 relative overflow-hidden shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-transform group-hover:-translate-y-1 group-hover:-translate-x-1">
+                            <img src="https://images.unsplash.com/photo-1555952517-2e8e729e0b44?auto=format&fit=crop&w=150&q=80" class="w-full h-full object-cover grayscale mix-blend-multiply" alt="Kant">
+                        </div>
+                        <div class="flex-grow pt-2">
+                            <h2 class="font-serif text-3xl mb-1">Immanuel Kant</h2>
+                            <p class="font-mono text-xs text-stone-500 uppercase tracking-wide mb-3">Critique of Pure Reason</p>
+                            <p class="font-serif text-lg leading-6 text-stone-700 w-3/4">"Act only according to that maxim whereby you can, at the same time, will that it should become a universal law."</p>
+                            
+                            <!-- Custom Star Rating Shape -->
+                            <div class="flex gap-2 mt-4">
+                                <div class="w-3 h-3 bg-stone-900 rounded-sm rotate-45"></div>
+                                <div class="w-3 h-3 bg-stone-900 rounded-sm rotate-45"></div>
+                                <div class="w-3 h-3 bg-stone-900 rounded-sm rotate-45"></div>
+                                <div class="w-3 h-3 bg-stone-900 rounded-sm rotate-45"></div>
+                                <div class="w-3 h-3 border border-stone-900 rounded-sm rotate-45"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Entry 2 -->
+                <div class="relative group">
+                    <div class="absolute -left-14 top-2 font-mono text-sm text-stone-400 -rotate-90 origin-center w-12 text-right">NO. 02</div>
+                    <div class="flex items-start gap-6">
+                        <div class="w-24 h-32 flex-shrink-0 bg-stone-300 relative overflow-hidden shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-transform group-hover:-translate-y-1 group-hover:-translate-x-1">
+                            <img src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?auto=format&fit=crop&w=150&q=80" class="w-full h-full object-cover grayscale mix-blend-multiply" alt="Camus">
+                        </div>
+                        <div class="flex-grow pt-2">
+                            <h2 class="font-serif text-3xl mb-1">Albert Camus</h2>
+                            <p class="font-mono text-xs text-stone-500 uppercase tracking-wide mb-3">Absurdism</p>
+                            <p class="font-serif text-lg leading-6 text-stone-700 w-3/4">"The only way to deal with an unfree world is to become so absolutely free that your very existence is an act of rebellion."</p>
+                            
+                            <div class="flex gap-2 mt-4">
+                                <div class="w-3 h-3 bg-stone-900 rounded-sm rotate-45"></div>
+                                <div class="w-3 h-3 bg-stone-900 rounded-sm rotate-45"></div>
+                                <div class="w-3 h-3 bg-stone-900 rounded-sm rotate-45"></div>
+                                <div class="w-3 h-3 bg-stone-900 rounded-sm rotate-45"></div>
+                                <div class="w-3 h-3 bg-stone-900 rounded-sm rotate-45"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Entry 3 -->
+                <div class="relative group">
+                    <div class="absolute -left-14 top-2 font-mono text-sm text-stone-400 -rotate-90 origin-center w-12 text-right">NO. 03</div>
+                    <div class="flex items-start gap-6">
+                        <div class="w-24 h-32 flex-shrink-0 bg-stone-300 relative overflow-hidden shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-transform group-hover:-translate-y-1 group-hover:-translate-x-1">
+                            <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?auto=format&fit=crop&w=150&q=80" class="w-full h-full object-cover grayscale mix-blend-multiply" alt="Plato">
+                        </div>
+                        <div class="flex-grow pt-2">
+                            <h2 class="font-serif text-3xl mb-1">Plato</h2>
+                            <p class="font-mono text-xs text-stone-500 uppercase tracking-wide mb-3">Idealism</p>
+                            <p class="font-serif text-lg leading-6 text-stone-700 w-3/4">"Thinking: the talking of the soul with itself."</p>
+                            
+                            <div class="flex gap-2 mt-4">
+                                <div class="w-3 h-3 bg-stone-900 rounded-sm rotate-45"></div>
+                                <div class="w-3 h-3 bg-stone-900 rounded-sm rotate-45"></div>
+                                <div class="w-3 h-3 bg-stone-900 rounded-sm rotate-45"></div>
+                                <div class="w-3 h-3 bg-stone-900 rounded-sm rotate-45"></div>
+                                <div class="w-3 h-3 bg-stone-400 rounded-sm rotate-45"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footer Signature -->
+            <div class="pl-8 mt-auto flex justify-between items-end border-t border-stone-300 pt-6">
+                <div class="font-serif italic text-2xl">Personal Selections</div>
+                <i data-lucide="feather" class="w-8 h-8 text-stone-900"></i>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
